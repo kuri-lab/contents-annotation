@@ -1,0 +1,173 @@
+<html>
+<head>
+  <title>annotation</title>
+  <style>
+  .js-slider{
+    position:center;
+    width:500px;
+    height:20px;
+    margin-left:30%;
+    margin-top:20%;
+  }
+  .js-slider div{
+    background:#ddd;
+    height:3px;
+    border:1px inset #aaa;
+    position:relative;
+    top:12px;
+    font-size:0px;
+  }
+  .js-slider input{
+    position:absolute;
+    width:15px;
+    height:20px;
+    margin-left:30%;
+    display:block;
+  }
+
+  </style>
+  <style type="text/css">
+  .example {/*親div*/
+    position: relative;/*相対配置*/
+    }
+
+    h2 {
+    font-size: 1.9rem;
+    text-align: center;
+
+  .example p {
+    position: absolute;/*絶対配置*/
+    color: white;/*文字は白に*/
+    font-weight: bold;
+    font-size: 2em;
+    margin-left:1%;
+    top: 10;
+    left: 0;
+    }
+
+  .example img {
+    width: 20%;
+    height: 40%;
+    }
+  </style>
+
+<style type="text/css">
+
+.example2 img {
+  margin-left:70%;
+  margin-top:-20%;
+  width: 20%;
+  height:35%;
+  }
+
+  .example3 img {
+    margin-left:40%;
+    margin-top:-45%;
+    width: 15%;
+    height:35%;
+    }
+
+  .right {margin-right: auto;}
+  </style>
+
+</head>
+
+<script type="text/javascript">
+  function chgImg(){
+    var timestamp = new Date().getTime();
+  }
+</script>
+
+<body>
+  <meta charset="UTF-8">
+<h2>二つの指標との印象の近さに合わせてスライドバーを調整してください</h2>
+
+  <form class="js-slider-form" onsubmit="return false;">
+    <input type="text" name="slider" id="slider1o" value="0">
+    <div id="slider1" class="js-slider">
+      <div></div>
+      <input type="button" value="">
+    </div>
+  </form>
+  <div class="example">
+   <img src="templates/red.png" width="300" height="300"/>
+  <p></p>
+</div>
+
+<div class="example2">
+ <img src="templates/blue.png" width="300" height="250"/>
+<p></p>
+</div>
+
+<div class="example3">
+ <img src="templates/cat.png" width="250" height="250"/>
+<p></p>
+</div>
+
+<body>
+  <input type="button" style="margin-left: 650px;margin-top: -300px;height:100px;width:200px;" value="NEXT" onclick="chgImg();">
+</body>
+
+
+
+
+  <script>
+  (function(){
+var slider = document.getElementById('slider1');
+var output = document.getElementById('slider1o');
+
+var input = slider.getElementsByTagName('input')[0];
+var root = document.documentElement;
+var dragging = false;
+var value = output.value;// 初期位置
+var width = input.clientWidth / 2;
+
+var set_value = function (){
+// つまみのサイズ(input.clientWidth)だけ位置を調整
+input.style.left = (value - input.clientWidth/2) + 'px';
+output.value = value;
+};
+set_value();
+
+// 目盛り部分をクリックしたとき
+slider.onclick = function(evt){
+dragging = true;
+document.onmousemove(evt);
+document.onmouseup();
+};
+// ドラッグ開始
+input.onmousedown = function(evt){
+dragging = true;
+return false;
+};
+// ドラッグ終了
+document.onmouseup = function(evt){
+if (dragging) {
+  dragging = false;
+  output.value = value;
+}
+};
+document.onmousemove = function(evt){
+if(dragging){
+  // ドラッグ途中
+  if(!evt){
+    evt = window.event;
+  }
+  var left = evt.clientX;
+  var rect = slider.getBoundingClientRect();
+  // マウス座標とスライダーの位置関係で値を決める
+  value = Math.round(left - rect.left - width);
+  // スライダーからはみ出したとき
+  if (value < 0) {
+    value = 0;
+  } else if (value > slider.clientWidth) {
+    value = slider.clientWidth;
+  }
+  set_value();
+  return false;
+}
+};
+})();
+  </script>
+</body>
+</html>
