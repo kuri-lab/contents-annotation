@@ -11,15 +11,22 @@
 .custom-range::-ms-thumb {
   background: gray;
 }
+
+#target,.reference,#slide-bar {
+  display: none;
+}
+.main-panel{
+  height: 300px;
+}
 {% endblock %}
 
 {% block body %}
 <section>
 <h2> ２つの指標と印象の近さを合わせてスライドバーを調整してください </h2>
 <div class="container">
-    <div class="row text-center align-items-center">
-      <div class="reference col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img src="{{references[0]}}" width="100%" height="100%"/>
+    <div class="main-panel row text-center align-items-center">
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img class="reference" src="{{references[0]}}" width="100%" height="100%"/>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div id="target">
@@ -44,8 +51,8 @@
           </form>
         </div>
       </div>
-      <div class="reference col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img src="{{references[1]}}" width="100%" height="100%"/>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img class="reference" src="{{references[1]}}" width="100%" height="100%"/>
       </div>
     </div>
     <div class="row text-center">
@@ -57,4 +64,54 @@
 {% endblock %}
 
 {% block js %}
+// jQueryでSleepする関数を作成
+$.wait = function(msec) {
+    // Deferredのインスタンスを作成
+    var d = new $.Deferred;
+
+    setTimeout(function(){
+        // 指定時間経過後にresolveしてdeferredを解決する
+        d.resolve(msec);
+    }, msec);
+
+    return d.promise();
+};
+var fade_dulation=300;
+function show_references(){
+  // 指標を表示
+  $('#next').fadeOut(fade_dulation);
+  $('.reference').fadeIn(fade_dulation);
+}
+function show_target(dulation){
+  // ターゲットを表示
+  $('.reference').fadeOut(fade_dulation);
+  $('#target').fadeIn(fade_dulation);
+  return $.wait(dulation);
+}
+function show_references_and_range_slider(dulation){
+  // 指標とスライドバーを表示
+  $('#target').fadeOut(fade_dulation);
+  $('.reference').fadeIn(fade_dulation);
+  $.wait(fade_dulation).done(function(){
+    $('#slide-bar').fadeIn(fade_dulation);
+  });
+  return $.wait(dulation);
+}
+$('#next').on('click', function(){
+  $.wait(300).then(function(){
+    // 指標を表示
+    show_references();
+    return $.wait({{hyperparameters['reference_dulation']}});
+  }).then(function(){
+    // ターゲットを表示
+    show_target();
+    return $.wait({{hyperparameters['target_dulation']}});
+  }).then(function(){
+    // スライダーを表示
+    show_references_and_range_slider();
+    return $.wait({{hyperparameters['target_dulation']}});
+  }).done(function(){
+    // timestampを準備してsubmit，次のtaskへ遷移．
+  });
+});
 {% endblock %}
