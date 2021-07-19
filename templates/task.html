@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block css %}
+.custom-range::-webkit-slider-thumb {
+  background: gray;
+}
+
+.custom-range::-moz-range-thumb {
+  background: gray;
+}
+
+.custom-range::-ms-thumb {
+  background: gray;
+}
+{% endblock %}
+
+{% block body %}
+<section>
+<h2> ２つの指標と印象の近さを合わせてスライドバーを調整してください </h2>
+<div class="container">
+    <div class="row text-center align-items-center">
+      <div class="reference col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img src="{{references[0]}}" width="100%" height="100%"/>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+        <div id="target">
+          <img src="{{target}}" width="50%" height="50%"/>
+        </div>
+        <div id="slide-bar">
+          <form
+            <input type="hidden" name="annotator_id" value={{annotator_id}}>
+            <input type="hidden" name="reference1" value={{references[0]}}>
+            <input type="hidden" name="reference2" value={{references[1]}}>
+            <input type="hidden" name="target" value={{target}}>
+            <input type="hidden" name="date" value=""> <!-- set in submitting function -->
+            <input type="range" class="custom-range w-100" min="-50" max="50" value="0" id="gauge" list="tlist">
+            <datalist id="tlist">
+    　　　　　　<option value="-50"></option>
+    　　　　　　<option value="-25"></option>
+    　　　　　　<option value="0"></option>
+    　　　　　　<option value="25"></option>
+    　　　　　　<option value="50"></option>
+    　　　　</datalist>
+          </form>
+        </div>
+      </div>
+      <div class="reference col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img src="{{references[1]}}" width="100%" height="100%"/>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <button id="next" type="button" class="btn btn-primary w-25">Next</button>
+      </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+{% endblock %}
