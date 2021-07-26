@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import random
 
 app = Flask(__name__, static_folder=".", static_url_path='')
 
@@ -9,8 +10,16 @@ def index():
 @app.route('/task/<hypara_set_id>')
 def task(hypara_set_id):
 
-    reference1 = "/templates/blue.png"
-    reference2 = "/templates/red.png"
+    lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
+
+
+    reference1 = '/templates/' + random.choice(lst_image)
+    reference2 = '/templates/' + random.choice(lst_image)
+    while True:
+        if reference1 == reference2:
+            reference2 = '/templates/' + random.choice(lst_image)
+        else:
+            break
     target = "/templates/cat.png"
     annotator_id = "Anno_test"
 
