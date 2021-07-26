@@ -45,11 +45,13 @@ def task(hypara_set_id):
 #以下を追加
 @app.route("/add",methods=["post"])
 def add():
+    reference1 = request.form['reference1']
+    reference2 = request.form['reference2']
     ref1 = request.form["test5"]
     ref1 = float(ref1)
     ref2 = - ref1
     print('aaa')
-    content = ImpressionContent(ref1,ref2,datetime.now())
+    content = ImpressionContent(reference1,reference2,ref1,ref2,datetime.now())
     db_session.add(content)
     db_session.commit()
     return index()
