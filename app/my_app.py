@@ -50,7 +50,6 @@ def add():
     ref1 = request.form["test5"]
     ref1 = float(ref1)
     ref2 = - ref1
-    print('aaa')
     content = ImpressionContent(reference1,reference2,ref1,ref2,datetime.now())
     db_session.add(content)
     db_session.commit()
