@@ -3,8 +3,8 @@ from models.database import Base
 from datetime import datetime
 
 
-class OnegaiContent(Base):
-    __tablename__ = 'onegaicontents'
+class ImpressionContent(Base):
+    __tablename__ = 'impressioncontents'
     id = Column(Integer, primary_key=True)
     ref1 = Column(Float)
     ref2 = Column(Float)

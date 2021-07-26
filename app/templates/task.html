@@ -21,6 +21,8 @@
 {% endblock %}
 
 {% block body %}
+
+
 <section>
 <h2> ２つの指標と印象の近さを合わせてスライドバーを調整してください </h2>
 <div class="container">
@@ -40,7 +42,15 @@
             <input type="hidden" name="target" value="{{target}}">
             <input type="hidden" name="hypara_set_name" value="{{hypara_set_id}}">
             <input type="hidden" name="timestamp" value=""> <!-- set in submitting function -->
-            <input type="range" class="custom-range w-100" min="-50" max="50" value="0" name="gauge" id="gauge" list="tlist">
+                      </form>
+            <form action="/add" method="post">
+              <input type="range"  class="custom-range w-100" value="1" min="-50" max="50" step="1" name="test5"
+              oninput="document.getElementById('test5').value=this.value">
+            <!-- <input type="range" class="custom-range w-100" min="-50" max="50" value="0" name="gauge" id="gauge" list="tlist"
+            oninput="document.getElementById('gauge').value=this.value"> -->
+           <output id="test5">0</output>
+           <button name="test5" value="Add">評価確定</button>
+           </form>
             <datalist id="tlist">
     　　　　　　<option value="-50"></option>
     　　　　　　<option value="-25"></option>
@@ -48,7 +58,6 @@
     　　　　　　<option value="25"></option>
     　　　　　　<option value="50"></option>
     　　　　</datalist>
-          </form>
         </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
@@ -61,6 +70,8 @@
       </div>
     </div>
 </section>
+
+
 <!-- <form action="/add" method="post">
     <input type="number" name="ref1" placeholder="ref1">
     <input type="number" name="ref2" placeholder="ref2">
