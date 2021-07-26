@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request
 import random
+from models.models import OnegaiContent
+#以下を追加
+from models.database import db_session
+from datetime import datetime
 
 app = Flask(__name__, static_folder=".", static_url_path='')
 
@@ -37,6 +41,16 @@ def task(hypara_set_id):
         hypara_set_id=hypara_set_id,
         hyperparameters=hyperparameters,
         )
+
+#以下を追加
+@app.route("/add",methods=["post"])
+def add():
+    ref1 = request.form["ref1"]
+    ref2 = request.form["ref2"]
+    content = OnegaiContent(ref1,ref2,datetime.now())
+    db_session.add(content)
+    db_session.commit()
+    return index()
 
 @app.route('/submit', methods=['POST'])
 def submit():
