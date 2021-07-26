@@ -6,5 +6,5 @@
 # How to start the server
 
 ```
-% python my_app.py
+% python run.py
 ```
