@@ -51,6 +51,8 @@ def add():
     ref1 = request.form["test5"]
     ref1 = float(ref1)
     ref2 = - ref1
+    # annotator_id = request.form['annotator_id']
+    # hypara_set_id = request.form['hypara_set_id']
     content = ImpressionContent(reference1,reference2,target, ref1,ref2,datetime.now())
     db_session.add(content)
     db_session.commit()
