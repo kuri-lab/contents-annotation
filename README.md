@@ -10,3 +10,12 @@
 ```
 
 access to http://localhost:8000/task/test_hyperparameter
+
+
+## Initialize databases
+
+```
+% python
+>>> from models.database import init_db
+>>> init_db()
+```
