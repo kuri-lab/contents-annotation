@@ -47,13 +47,15 @@ def task(hypara_set_id):
 def add():
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
+    target = request.form['target']
     ref1 = request.form["test5"]
     ref1 = float(ref1)
     ref2 = - ref1
-    content = ImpressionContent(reference1,reference2,ref1,ref2,datetime.now())
+    content = ImpressionContent(reference1,reference2,target, ref1,ref2,datetime.now())
     db_session.add(content)
     db_session.commit()
     return index()
+
 
 @app.route('/submit', methods=['POST'])
 def submit():
