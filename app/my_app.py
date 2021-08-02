@@ -15,6 +15,7 @@ def index():
 def task(hypara_set_id):
 
     lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
+    lst_target = ['dog.png','kyusu.png','cat.png','yakan.png','rabbit.png']
 
 
     reference1 = '/templates/' + random.choice(lst_image)
@@ -24,7 +25,7 @@ def task(hypara_set_id):
             reference2 = '/templates/' + random.choice(lst_image)
         else:
             break
-    target = "/templates/cat.png"
+    target = '/templates/' + random.choice(lst_target)
     annotator_id = "Anno_test"
 
     hyperparameters = {
