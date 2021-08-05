@@ -24,6 +24,6 @@ access to http://localhost:8000/task/hypara_test
 ## check the database
 
 ```
-sqlite3 models/impression.db
+% sqlite3 models/impression.db
 sqlite> Select * from impressioncontents;
 ```
