@@ -6,7 +6,7 @@ from datetime import datetime
 class ImpressionContent(Base):
     __tablename__ = 'impressioncontents'
     id = Column(Integer, primary_key=True)
-    name = Column(String(128), unique=True)
+    name = Column(String)
     reference1 = Column(String)
     reference2 = Column(String)
     target = Column(String)

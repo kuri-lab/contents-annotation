@@ -11,21 +11,37 @@ from hashlib import sha256
 app = Flask(__name__, static_folder=".", static_url_path='')
 app.secret_key = key.SECRET_KEY
 
-@app.route('/')
+@app.route('/index')
 # @app.route("/index")
 def index():
     if "user_name" in session:
         name = session["user_name"]
         impression = ImpressionContent.query.all()
-        return redirect(url_for("/task/<hypara_set_id>"))
+        return redirect("task/hypara_test")
     else:
         return redirect(url_for("top"))
+
+
+@app.route('/redirect')
+# @app.route("/index")
+# def redirect2():
+#     #print("test")
+#     print("test" + url_for("task"))
+#     return redirect("/task")
+
+def redirect_test():
+    return redirect("task/hypara_test")
+
 # def index():
 #     return app.send_static_file('index.html')
 
-@app.route('/task/<hypara_set_id>')
-def task(hypara_set_id):
-
+@app.route('/task/hypara_test')
+def task():
+    hypara_set_id = "hoge"
+    try:
+        annotator_id = session["user_name"]
+    except KeyError:
+        annotator_id = "unknown_user"
     lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
     lst_target = ['dog.png','kyusu.png','cat.png','yakan.png','rabbit.png']
 
@@ -38,7 +54,7 @@ def task(hypara_set_id):
         else:
             break
     target = '/templates/' + random.choice(lst_target)
-    annotator_id = "Anno_test"
+    #annotator_id = "Anno_test"
 
     hyperparameters = {
         'reference_dulation': 2000, #msec
@@ -58,7 +74,7 @@ def task(hypara_set_id):
 #以下を追加
 @app.route("/add",methods=["post"])
 def add():
-    name = session.get('user_name', None)
+    name = request.form['annotator_id']
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
     target = request.form['target']
@@ -101,7 +117,7 @@ def login():
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
-            return (redirect(url_for("add")),redirect(url_for("index")))
+            return (redirect('/task/hypara_test'))#,redirect('/'))
         else:
             return redirect(url_for("top",status="wrong_password"))
     else:
