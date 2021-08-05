@@ -12,7 +12,7 @@
 access to http://localhost:8000/task/hypara_test
 
 
-## Initialize databases
+## Initialize databases　データベースの初期化
 
 ```
 % python
