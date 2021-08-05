@@ -1,2 +1,3 @@
 .DS_Store
 .impression.db
+**/__pycache__
