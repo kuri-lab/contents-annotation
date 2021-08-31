@@ -4,11 +4,11 @@
 
 ## docker
 
-tsugaikeにすでにあるものを使用する。以下のコードを実行することでコンテナを作成することができる。(nameは自分で指定する。)
+tsugaikeにすでにあるものを使用する。コンテナの作成(nameは自分で指定する。)
 ```
 nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name annotation annotation:gpu
 ```
-その後、以下のコードでjupyterlabを起動できる。
+jupyterlabの起動
 ```
 cd /workspace/sample/
 jupyter lab --allow-root --ip=* --no-browser
