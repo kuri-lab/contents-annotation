@@ -22,13 +22,13 @@ jupyter lab --allow-root --ip=* --no-browser
 access to http://192.168.101.7/:8000/task/hypara_test
 
 
-# check the database
+#### check the database
 ```
 % sqlite3 models/impression.db
 sqlite> Select * from impressioncontents;
 ```
 
-# Initialize databases　データベースの初期化
+#### Initialize databases　
 ```
 % python
 >>> from models.database import init_db
