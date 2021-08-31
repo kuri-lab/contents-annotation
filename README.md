@@ -22,6 +22,7 @@ jupyter lab --allow-root --ip=* --no-browser
 access to http://192.168.101.7/:8000/task/hypara_test
 
 
+## others
 #### check the database
 ```
 % sqlite3 models/impression.db
