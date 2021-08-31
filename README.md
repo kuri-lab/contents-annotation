@@ -14,7 +14,7 @@ nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name
 ```
 % python run.py
 ```
-access to http://192.168.101.7/:8000/top
+access to http://192.168.101.7:8000/top
 
 
 ## others
