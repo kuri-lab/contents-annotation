@@ -1,3 +1,4 @@
 .DS_Store
 .impression.db
 **/__pycache__
+.ipynb_checkpoints
