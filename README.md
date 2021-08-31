@@ -2,6 +2,11 @@
 
 画像の印象を付与するアノテーションツール
 
+## docker
+
+
+```nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name annotation annotation:gpu'''
+
 
 ## Initialize databases　データベースの初期化
 
