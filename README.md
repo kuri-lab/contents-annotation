@@ -8,7 +8,9 @@ tsugaikeにすでにあるものを使用する。以下のコードを実行す
 ```
 nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name annotation annotation:gpu
 '''
+
 その後、以下のコードでjupyterlabを起動できる。
+
 ```
 cd /workspace/sample/
 jupyter lab --allow-root --ip=* --no-browser
