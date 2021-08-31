@@ -8,11 +8,6 @@ tsugaikeにすでにあるものを使用する。コンテナの作成(nameは�
 ```
 nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name annotation annotation:gpu
 ```
-jupyterlabの起動
-```
-cd /workspace/sample/
-jupyter lab --allow-root --ip=* --no-browser
-```
 
 ## How to start the server
 
@@ -23,6 +18,13 @@ access to http://192.168.101.7/:8000/top
 
 
 ## others
+### jupyterlabの起動
+```
+cd /workspace/sample/
+jupyter lab --allow-root --ip=* --no-browser
+```
+
+
 #### check the database
 ```
 % sqlite3 models/impression.db
