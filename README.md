@@ -16,6 +16,10 @@ python run.py
 ```
 access to http://192.168.101.7:8000/top
 
+## app/templates
+app/templates/ に表示する画像を入れているが、gitignoreしている。
+* 手塚データセットは、[link](https://keio.app.box.com/s/s3pbq6na714vbbsh4hjuje267agrb74k). 
+* DomainNetのSketchは、[link](http://ai.bu.edu/M3SDA/). 
 
 ## others
 ### jupyterlabの起動
