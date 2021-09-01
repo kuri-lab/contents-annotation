@@ -46,14 +46,14 @@ def task():
     lst_target = ['dog.png','kyusu.png','cat.png','yakan.png','rabbit.png']
 
 
-    reference1 = '/templates/' + random.choice(lst_image)
-    reference2 = '/templates/' + random.choice(lst_image)
+    reference1 = '/templates/colors/' + random.choice(lst_image)
+    reference2 = '/templates/colors/' + random.choice(lst_image)
     while True:
         if reference1 == reference2:
-            reference2 = '/templates/' + random.choice(lst_image)
+            reference2 = '/templates/colors/' + random.choice(lst_image)
         else:
             break
-    target = '/templates/' + random.choice(lst_target)
+    target = '/templates/targets/' + random.choice(lst_target)
     #annotator_id = "Anno_test"
 
     hyperparameters = {
