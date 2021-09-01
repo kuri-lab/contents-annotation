@@ -51,8 +51,13 @@ def task():
                    '06344.jpg','03026.jpg','04652.jpg','06774.jpg','05875.jpg','03229.jpg','08223.jpg','06095.jpg','08273.jpg','06663.jpg',
                    '05274.jpg','08116.jpg','04126.jpg','05846.jpg','01897.jpg','00150.jpg','00289.jpg','03544.jpg','09339.jpg','04057.jpg']
     
+<<<<<<< HEAD
     for f in glob('/templates/target/*'):
         lst_target.append(os.path.split(f)[1])
+=======
+#     for f in glob('/templates/target/*'):
+#         lst_target.append(os.path.split(f)[1])
+>>>>>>> 7bb079bf76ba5fa2d75c24ef4b506ff4f8ec8e32
     
     reference1 = '/templates/color/' + random.choice(lst_image)
     reference2 = '/templates/color/' + random.choice(lst_image)

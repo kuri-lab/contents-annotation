@@ -4,25 +4,31 @@
 
 ## docker
 
-tsugaikeにすでにあるものを使用する。以下のコードを実行することでコンテナを作成することができる。(nameは自分で指定する。)
+tsugaikeにすでにあるものを使用する。コンテナの作成(nameは自分で指定する。)
 ```
 nvidia-docker run -it -v `pwd`:/workspace/sample --net=host --shm-size 8G --name annotation annotation:gpu
-```
-その後、以下のコードでjupyterlabを起動できる。
-```
-cd /workspace/sample/
-jupyter lab --allow-root --ip=* --no-browser
 ```
 
 ## How to start the server
 
 ```
-% python run.py
+python run.py
 ```
-access to http://192.168.101.7/:8000/task/hypara_test
+access to http://192.168.101.7:8000/top
 
+## app/templates
+app/templates/ に表示する画像を入れているが、gitignoreしている。
+* 手塚データセットは、[link](https://keio.app.box.com/s/s3pbq6na714vbbsh4hjuje267agrb74k). 
+* DomainNetのSketchは、[link](http://ai.bu.edu/M3SDA/). 
 
 ## others
+### jupyterlabの起動
+```
+cd /workspace/sample/
+jupyter lab --allow-root --ip=* --no-browser
+```
+
+
 #### check the database
 ```
 % sqlite3 models/impression.db
