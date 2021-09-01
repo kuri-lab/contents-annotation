@@ -63,7 +63,7 @@ def task():
     reference2 = '/templates/color/' + random.choice(lst_image)
     while True:
         if reference1 == reference2:
-            reference2 = '/templates/' + random.choice(lst_image)
+            reference2 = '/templates/color' + random.choice(lst_image)
         else:
             break
     
