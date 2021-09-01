@@ -4,7 +4,10 @@
     <title>Login</title>
 </head>
 <body>
-    <h1>ログイン</h1>
+    <h1>Instruction</h1>
+    <p>こんにちは。私たちは慶應義塾大学大学院の学生です。実験のご協力ありがとうございます。<br>
+    ユーザー登録をお済みでない方は、新規登録をしてください。<br>
+    ログイン後は説明にしたがって実験を行ってください。<br>
     {% if status == "user_notfound" %}
     <p>ユーザが見つかりません。新規登録しましょう。</p>
     {% elif status == "wrong_password" %}
@@ -17,6 +20,7 @@
         <input type="password" name="password" placeholder="password">
         <input type="submit" value="Login">
     </form>
+    
     <a href="/newcomer">新規登録はこちら</a>
 </body>
 </html>
