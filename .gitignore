@@ -5,6 +5,10 @@
 */.ipynb_checkpoints/*
 .virtual_documents/
 
+tezuka/
+DomainNet/
+target/
+
 __pycache__/
 
 

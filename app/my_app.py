@@ -1,12 +1,13 @@
 from flask import Flask, render_template, request
 import random
 from models.models import ImpressionContent,User
-#以下を追加
 from models.database import db_session
 from datetime import datetime
 from flask import session,redirect,url_for
 from app import key
 from hashlib import sha256
+import os
+from glob import glob
 
 app = Flask(__name__, static_folder=".", static_url_path='')
 app.secret_key = key.SECRET_KEY
@@ -34,7 +35,6 @@ def redirect_test():
 
 # def index():
 #     return app.send_static_file('index.html')
-
 @app.route('/task/hypara_test')
 def task():
     hypara_set_id = "hoge"
@@ -42,23 +42,31 @@ def task():
         annotator_id = session["user_name"]
     except KeyError:
         annotator_id = "unknown_user"
+    
     lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
-    lst_target = ['dog.png','kyusu.png','cat.png','yakan.png','rabbit.png']
-
-
-    reference1 = '/templates/' + random.choice(lst_image)
-    reference2 = '/templates/' + random.choice(lst_image)
+    
+    lst_target  = ['03989.jpg','08789.jpg','08146.jpg','04071.jpg','07216.jpg','08668.jpg','08491.jpg','09208.jpg','02213.jpg','03590.jpg',
+                   '01993.jpg','03109.jpg','06626.jpg','06518.jpg','08858.jpg','07250.jpg','02261.jpg','02141.jpg','03924.jpg','06510.jpg',
+                   '06252.jpg','06250.jpg','07912.jpg','01764.jpg','08184.jpg','09132.jpg','00817.jpg','07918.jpg','03873.jpg','01670.jpg',
+                   '06344.jpg','03026.jpg','04652.jpg','06774.jpg','05875.jpg','03229.jpg','08223.jpg','06095.jpg','08273.jpg','06663.jpg',
+                   '05274.jpg','08116.jpg','04126.jpg','05846.jpg','01897.jpg','00150.jpg','00289.jpg','03544.jpg','09339.jpg','04057.jpg']
+    
+#     for f in glob('/templates/target/*'):
+#         lst_target.append(os.path.split(f)[1])
+    
+    reference1 = '/templates/color/' + random.choice(lst_image)
+    reference2 = '/templates/color/' + random.choice(lst_image)
     while True:
         if reference1 == reference2:
             reference2 = '/templates/' + random.choice(lst_image)
         else:
             break
-    target = '/templates/' + random.choice(lst_target)
-    #annotator_id = "Anno_test"
+    
+    target = '/templates/target/' + random.choice(lst_target)
 
     hyperparameters = {
-        'reference_dulation': 2000, #msec
-        'target_dulation': 2000,
+        'reference_dulation': 2000, #
+        'target_dulation': 100, #ターゲット画像表示時間
         'slider_dulation': 4000,
     } # load from sql table.
 
@@ -152,4 +160,4 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0' , port=8000,debug=True)
+app.run(host='0.0.0.0', port=8000,debug=True)
