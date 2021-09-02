@@ -10,17 +10,16 @@ class ImpressionContent(Base):
     reference1 = Column(String)
     reference2 = Column(String)
     target = Column(String)
-    ref1 = Column(Float)
-    ref2 = Column(Float)
+    impression = Column(Float)
     date = Column(DateTime, default=datetime.now())
 
-    def __init__(self, name=None, reference1=None, reference2=None, target=None,ref1=None, ref2=None, date=None):
+    def __init__(self, name=None, reference1=None, reference2=None, target=None,impression=None, date=None):
         self.name = name
         self.reference1 = reference1
         self.reference2 = reference2
         self.target = target
-        self.ref1 = ref1
-        self.ref2 = ref2
+        # 中心を０としている。マイナスがreference1でプラスがreference2
+        self.impression = impression
         self.date = date
 
     def __repr__(self):

@@ -12,6 +12,8 @@ DomainNet/
 target/
 sample_*/
 
+impression.db
+
 __pycache__/
 
 
