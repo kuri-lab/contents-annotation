@@ -45,12 +45,3 @@ jupyter lab --allow-root --ip=* --no-browser
 % sqlite3 models/impression.db
 sqlite> Select * from impressioncontents;
 ```
-
-#### Initialize databases　
-```
-% python
->>> from models.database import init_db
->>> init_db()
->>> exit()
-```
-
