@@ -24,7 +24,7 @@ app/templates/Image に表示する画像を入れているが、gitignoreして
 * 手塚データセットは、[link](https://keio.app.box.com/s/s3pbq6na714vbbsh4hjuje267agrb74k). 
 * DomainNetのSketchは、[link](http://ai.bu.edu/M3SDA/). 
 
-## others
+## Others
 ### docker
 
 tsugaikeにすでにあるものを使用する。コンテナの作成(nameは自分で指定する。)
