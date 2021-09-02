@@ -6,8 +6,9 @@ from datetime import datetime
 from flask import session,redirect,url_for
 from app import key
 from hashlib import sha256
-import os
+
 from glob import glob
+import os
 
 app = Flask(__name__, static_folder=".", static_url_path='')
 app.secret_key = key.SECRET_KEY
@@ -43,7 +44,9 @@ def task():
     except KeyError:
         annotator_id = "unknown_user"
     
-    lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
+    lst_image = ['black.png','green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
+#     # なぜかうまくいかない ?????
+#     lst_image = [os.path.basename(r) for r in glob('/templates/colors/*')]
     
     # tezuka 50 domainnet 50 をランダムに選んだ。合計100こ
     lst_target = ['sketch_264_000305.jpg','02662.jpg','sketch_311_000080.jpg','sketch_206_000010.jpg','05979.jpg','05939.jpg','sketch_267_000502.jpg',
