@@ -5,9 +5,12 @@
 */.ipynb_checkpoints/*
 .virtual_documents/
 
+Image/
 tezuka/
+tezuka_*/
 DomainNet/
 target/
+sample_*/
 
 __pycache__/
 
