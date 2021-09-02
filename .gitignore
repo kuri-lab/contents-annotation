@@ -15,6 +15,9 @@ sample_*/
 models/impression.db
 impression.db
 
+python_run.ipynb
+sql.ipynb
+
 __pycache__/
 
 
