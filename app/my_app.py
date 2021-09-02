@@ -44,7 +44,8 @@ def task():
         annotator_id = "unknown_user"
     
     lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
-    lst_target  = ['cat.png','dog.png']
+    
+    # tezuka 50 domainnet 50 をランダムに選んだ。合計100こ
     lst_target = ['sketch_264_000305.jpg','02662.jpg','sketch_311_000080.jpg','sketch_206_000010.jpg','05979.jpg','05939.jpg','sketch_267_000502.jpg',
                   'sketch_244_000045.jpg','00897.jpg','03700.jpg','sketch_303_000165.jpg','sketch_257_000125.jpg','02917.jpg','05740.jpg','03486.jpg',
                   'sketch_165_000210.jpg','01898.jpg','09160.jpg','sketch_266_000151.jpg','sketch_024_000092.jpg','06852.jpg','04731.jpg','06368.jpg',
@@ -63,7 +64,7 @@ def task():
     reference2 = '/templates/colors/' + random.choice(lst_image)
     while True:
         if reference1 == reference2:
-            reference2 = '/templates/colors' + random.choice(lst_image)
+            reference2 = '/templates/colors/' + random.choice(lst_image)
         else:
             break
     
@@ -91,12 +92,11 @@ def add():
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
     target = request.form['target']
-    ref1 = request.form["test5"]
-    ref1 = float(ref1)
-    ref2 = - ref1
+    impression = request.form["test5"]
+    impression = float(impression)
     # annotator_id = request.form['annotator_id']
     # hypara_set_id = request.form['hypara_set_id']
-    content = ImpressionContent(name, reference1,reference2,target, ref1,ref2,datetime.now())
+    content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now())
     db_session.add(content)
     db_session.commit()
     return index()
