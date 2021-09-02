@@ -44,33 +44,33 @@ def task():
         annotator_id = "unknown_user"
     
     lst_image = ['green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
-    
-    lst_target  = ['03989.jpg','08789.jpg','08146.jpg','04071.jpg','07216.jpg','08668.jpg','08491.jpg','09208.jpg','02213.jpg','03590.jpg',
-                   '01993.jpg','03109.jpg','06626.jpg','06518.jpg','08858.jpg','07250.jpg','02261.jpg','02141.jpg','03924.jpg','06510.jpg',
-                   '06252.jpg','06250.jpg','07912.jpg','01764.jpg','08184.jpg','09132.jpg','00817.jpg','07918.jpg','03873.jpg','01670.jpg',
-                   '06344.jpg','03026.jpg','04652.jpg','06774.jpg','05875.jpg','03229.jpg','08223.jpg','06095.jpg','08273.jpg','06663.jpg',
-                   '05274.jpg','08116.jpg','04126.jpg','05846.jpg','01897.jpg','00150.jpg','00289.jpg','03544.jpg','09339.jpg','04057.jpg']
-    
-<<<<<<< HEAD
-    for f in glob('/templates/target/*'):
-        lst_target.append(os.path.split(f)[1])
-=======
-#     for f in glob('/templates/target/*'):
-#         lst_target.append(os.path.split(f)[1])
->>>>>>> 7bb079bf76ba5fa2d75c24ef4b506ff4f8ec8e32
-    
-    reference1 = '/templates/color/' + random.choice(lst_image)
-    reference2 = '/templates/color/' + random.choice(lst_image)
+    lst_target  = ['cat.png','dog.png']
+    lst_target = ['sketch_264_000305.jpg','02662.jpg','sketch_311_000080.jpg','sketch_206_000010.jpg','05979.jpg','05939.jpg','sketch_267_000502.jpg',
+                  'sketch_244_000045.jpg','00897.jpg','03700.jpg','sketch_303_000165.jpg','sketch_257_000125.jpg','02917.jpg','05740.jpg','03486.jpg',
+                  'sketch_165_000210.jpg','01898.jpg','09160.jpg','sketch_266_000151.jpg','sketch_024_000092.jpg','06852.jpg','04731.jpg','06368.jpg',
+                  'sketch_279_000426.jpg','01921.jpg','sketch_237_000045.jpg','08465.jpg','03025.jpg','sketch_238_000018.jpg','sketch_039_000202.jpg',
+                  '00287.jpg','00716.jpg','00928.jpg','sketch_022_000194.jpg','05453.jpg','sketch_029_000061.jpg','01877.jpg','sketch_109_000249.jpg',
+                  '07845.jpg','06778.jpg','00269.jpg','00407.jpg','sketch_219_000190.jpg','sketch_258_000019.jpg','sketch_254_000057.jpg','sketch_300_000255.jpg',
+                  '05345.jpg','04411.jpg','sketch_219_000011.jpg','sketch_287_000038.jpg','sketch_259_000093.jpg','sketch_104_000141.jpg','07360.jpg','09030.jpg',
+                  'sketch_178_000076.jpg','00793.jpg','06217.jpg','sketch_135_000040.jpg','sketch_103_000037.jpg','sketch_266_000214.jpg','sketch_330_000054.jpg',
+                  'sketch_095_000026.jpg','08323.jpg','sketch_026_000078.jpg','05479.jpg','sketch_102_000144.jpg','04782.jpg','sketch_167_000102.jpg',
+                  'sketch_261_000278.jpg','sketch_279_000024.jpg','sketch_032_000108.jpg','08266.jpg','03481.jpg','00622.jpg','sketch_186_000129.jpg',
+                  'sketch_011_000193.jpg','06288.jpg','04665.jpg','sketch_101_000030.jpg','sketch_252_000334.jpg','01310.jpg','04697.jpg','sketch_121_000203.jpg',
+                  '05205.jpg','02499.jpg','05870.jpg','sketch_072_000083.jpg','sketch_143_000091.jpg','sketch_121_000228.jpg','sketch_010_000102.jpg','sketch_032_000103.jpg',
+                  '01511.jpg','sketch_267_000424.jpg','sketch_273_000666.jpg','09325.jpg','00533.jpg','07841.jpg','04373.jpg','02705.jpg','sketch_248_000318.jpg']
+
+    reference1 = '/templates/colors/' + random.choice(lst_image)
+    reference2 = '/templates/colors/' + random.choice(lst_image)
     while True:
         if reference1 == reference2:
-            reference2 = '/templates/color' + random.choice(lst_image)
+            reference2 = '/templates/colors' + random.choice(lst_image)
         else:
             break
     
-    target = '/templates/target/' + random.choice(lst_target)
+    target = '/templates/Image/sample_target/' + random.choice(lst_target)
 
     hyperparameters = {
-        'reference_dulation': 2000, #
+        'reference_dulation': 2000, #msc
         'target_dulation': 100, #ターゲット画像表示時間
         'slider_dulation': 4000,
     } # load from sql table.
