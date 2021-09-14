@@ -122,17 +122,10 @@ function show_target(dulation){
   $('#target').fadeIn(fade_dulation);
   return $.wait(dulation);
 }
-function show_reference(dulation){
-  // 色を表示
-  $('#next').fadeOut(fade_dulation);
-  $('.reference').fadeIn(fade_dulation);
-  $('#target').fadeOut(fade_dulation);
-  return $.wait(dulation);
-}    
 function show_references_and_range_slider(dulation){
   // 指標とスライドバーを表示
   $('#target').fadeOut(fade_dulation);
-  $('.reference').fadeOut(fade_dulation);
+  $('.reference').fadeIn(fade_dulation);
   $.wait(fade_dulation).done(function(){
     $('#slide-bar').fadeIn(fade_dulation);
   });
@@ -142,10 +135,6 @@ $('#next').on('click', function(){
   $.wait(300).then(function(){
     // ターゲットを表示
     show_target();
-    return $.wait({{hyperparameters['target_dulation']}});
-  }).then(function(){
-    // 色を表示
-    show_reference();
     return $.wait({{hyperparameters['target_dulation']}});
   }).then(function(){
     // スライダーを表示

@@ -44,7 +44,9 @@ def task():
     except KeyError:
         annotator_id = "unknown_user"
     
-    lst_image = ['black.png','green.png','blue.png','red.png','white.png','bluepurple.png','purple.png','yellow.png','yellowred.png']
+    lst_image = ['green.png','blue.png','red.png','yellow.png',]
+#                  'purple.png','black.png',,'white.png','bluepurple.png','yellowred.png'
+
 #     # なぜかうまくいかない ?????
 #     lst_image = [os.path.basename(r) for r in glob('/templates/colors/*')]
     
@@ -75,7 +77,7 @@ def task():
 
     hyperparameters = {
         'reference_dulation': 2000, #msc
-        'target_dulation': 100, #ターゲット画像表示時間
+        'target_dulation': 300, #ターゲット画像表示時間
         'slider_dulation': 4000,
     } # load from sql table.
 
