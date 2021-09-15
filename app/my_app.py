@@ -112,7 +112,8 @@ def add():
     db_session.commit()
     ll.append([1])
     n = len(ll)
-    if n <= 100:
+   #print(n)
+    if n <= 1000:
         return index()
     else :
         return logout()
