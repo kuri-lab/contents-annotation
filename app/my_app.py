@@ -83,11 +83,8 @@ def task():
         'slider_dulation': 4000,
     } # load from sql table.
     num.append([1])
-    pro = int(len(num)/10)
-    pro = str(pro)
-    progress = pro[-1]
-    progress = int(progress)
-    #progress = 10
+    pro = str(int(len(num)/10))
+    progress = int(pro[-1])
     return render_template(
         'task.html',
         references=[reference1,reference2],
