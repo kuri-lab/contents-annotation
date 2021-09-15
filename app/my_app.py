@@ -43,13 +43,13 @@ def task():
         annotator_id = session["user_name"]
     except KeyError:
         annotator_id = "unknown_user"
-    
+
     lst_image = ['green.png','blue.png','red.png','yellow.png',]
 #                  'purple.png','black.png',,'white.png','bluepurple.png','yellowred.png'
 
 #     # なぜかうまくいかない ?????
 #     lst_image = [os.path.basename(r) for r in glob('/templates/colors/*')]
-    
+
     # tezuka 50 domainnet 50 をランダムに選んだ。合計100こ
     lst_target = ['sketch_264_000305.jpg','02662.jpg','sketch_311_000080.jpg','sketch_206_000010.jpg','05979.jpg','05939.jpg','sketch_267_000502.jpg',
                   'sketch_244_000045.jpg','00897.jpg','03700.jpg','sketch_303_000165.jpg','sketch_257_000125.jpg','02917.jpg','05740.jpg','03486.jpg',
@@ -72,7 +72,7 @@ def task():
             reference2 = '/templates/colors/' + random.choice(lst_image)
         else:
             break
-    
+
     target = '/templates/Image/sample_target/' + random.choice(lst_target)
 
     hyperparameters = {
@@ -81,6 +81,7 @@ def task():
         'slider_dulation': 4000,
     } # load from sql table.
 
+    progress = 10
     return render_template(
         'task.html',
         references=[reference1,reference2],
@@ -88,6 +89,7 @@ def task():
         annotator_id=annotator_id,
         hypara_set_id=hypara_set_id,
         hyperparameters=hyperparameters,
+        progress=progress,
         )
 
 #以下を追加

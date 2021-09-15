@@ -83,7 +83,19 @@ filter: grayscale(100%);
     </div>
     <div class="row text-center m-2">
       <div class="button col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <button id="next" type="button" class="btn btn-primary w-25">Next</button>
+        <button id="next" type="button" class="btn btn-primary w-25 bg-secondary">Next</button>
+      </div>
+    </div>
+    <div class="row text-center m-4">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        Progress:
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <div class="progress">
+          <div class="progress-bar bg-secondary" role="progressbar" style="width: {{progress}}%" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
       </div>
     </div>
 </section>
@@ -128,7 +140,7 @@ function show_reference(dulation){
   $('.reference').fadeIn(fade_dulation);
   $('#target').fadeOut(fade_dulation);
   return $.wait(dulation);
-}    
+}
 function show_references_and_range_slider(dulation){
   // 指標とスライドバーを表示
   $('#target').fadeOut(fade_dulation);
