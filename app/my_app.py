@@ -35,6 +35,7 @@ def index():
 def redirect_test():
     return redirect("task/hypara_test")
 
+num = []
 # def index():
 #     return app.send_static_file('index.html')
 @app.route('/task/hypara_test')
@@ -81,8 +82,12 @@ def task():
         'target_dulation': 300, #ターゲット画像表示時間
         'slider_dulation': 4000,
     } # load from sql table.
-
-    progress = 10
+    num.append([1])
+    pro = int(len(num)/10)
+    pro = str(pro)
+    progress = pro[-1]
+    progress = int(progress)
+    #progress = 10
     return render_template(
         'task.html',
         references=[reference1,reference2],
