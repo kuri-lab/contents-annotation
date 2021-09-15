@@ -13,6 +13,7 @@ import os
 app = Flask(__name__, static_folder=".", static_url_path='')
 app.secret_key = key.SECRET_KEY
 
+
 @app.route('/index')
 # @app.route("/index")
 def index():
@@ -93,6 +94,7 @@ def task():
         )
 
 #以下を追加
+ll = []
 @app.route("/add",methods=["post"])
 def add():
     name = request.form['annotator_id']
@@ -101,12 +103,19 @@ def add():
     target = request.form['target']
     impression = request.form["test5"]
     impression = float(impression)
+    # progress = request.form["progress"]
+    # progress = int(progress)
     # annotator_id = request.form['annotator_id']
     # hypara_set_id = request.form['hypara_set_id']
     content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now())
     db_session.add(content)
     db_session.commit()
-    return index()
+    ll.append([1])
+    n = len(ll)
+    if n <= 100:
+        return index()
+    else :
+        return logout()
 
 
 @app.route('/submit', methods=['POST'])
@@ -172,4 +181,4 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0', port=8000,debug=True)
+app.run(port=8005,debug=True)
