@@ -117,7 +117,7 @@ def add():
     # progress = int(progress)
     # annotator_id = request.form['annotator_id']
     # hypara_set_id = request.form['hypara_set_id']
-    content = ImpressionContent(name, reference1,reference2,target, impression,timestamp)
+    content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now())
     db_session.add(content)
     db_session.commit()
     ll.append([1])
