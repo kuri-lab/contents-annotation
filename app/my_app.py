@@ -107,10 +107,8 @@ def add():
         count = session["count"] +1
         session["count"] = count
     else:
-        #num_touches = 0
         count = session["count"]
         session["count"] = count
-    print(num_touches)
     name = request.form['annotator_id']
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
@@ -162,7 +160,8 @@ def login():
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
-            count = ImpressionContent.query.filter_by(name=user_name).count()
+            count = ImpressionContent.query.filter_by(name=user_name, num_touches=1).count()
+            print(count)
             session["count"] = count
             return (redirect('/task/hypara_test'))#,redirect('/'))
         else:
