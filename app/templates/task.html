@@ -19,7 +19,7 @@
 }
 
 #target,.reference,#slide-bar {
-  display: none;
+  visibility: hidden;
 }
 .image-panel{
   height: 250px;
@@ -44,11 +44,11 @@ filter: grayscale(100%);
 <div class="container-fruid">
     <div class="main-panel row text-center align-items-center m-2">
       <div class="image-panel col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img class="reference image-panel" src="{{references[0]}}" width="250px" height="250px"/>
+        <img class="reference image-panel" src="{{references[0]}}" width="100%" height="100%"/>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div id="target">
-          <img src="{{target}}" class="gray image-panel" width="250px"/>
+          <img src="{{target}}" class="gray image-panel" height="100%"/>
         </div>
         <div id="slide-bar">
             <form id="form_sample" action="/add" method="post">
@@ -76,7 +76,7 @@ filter: grayscale(100%);
         </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img class="reference image-panel" src="{{references[1]}}" width="250px" height="250px"/>
+        <img class="reference image-panel" src="{{references[1]}}" width="100%" height="100%"/>
       </div>
     </div>
     <div class="row text-center m-2">
@@ -135,27 +135,38 @@ $.wait = function(msec) {
     return d.promise();
 };
 var fade_dulation=0;
+function my_fadeout(selector){
+  $(selector).fadeOut(fade_dulation,function() {
+        $(this).css({"display": "block","visibility": "hidden"})
+  });
+}
+function my_fadein(selector){
+  $(selector).fadeIn(fade_dulation,function(){
+      $(this).css({"display": "block","visibility": "visible"});
+    }
+  );
+}
+
 function show_target(dulation){
   // ターゲットを表示
-  $('#next').fadeOut(fade_dulation);
-  $('.reference').fadeOut(fade_dulation);
-  $('#target').fadeIn(fade_dulation);
+  my_fadeout('#next');
+  my_fadeout('.reference');
+  my_fadein('#target');
   return $.wait(dulation);
 }
 function show_reference(dulation){
   // 色を表示
-  $('#next').fadeOut(fade_dulation);
-  $('.reference').fadeIn(fade_dulation);
-  $('#target').fadeOut(fade_dulation);
+  my_fadein('.reference');
+  my_fadeout('#target');
   return $.wait(dulation);
 }
 function show_references_and_range_slider(dulation){
   // 指標とスライドバーを表示
-  $('#target').fadeOut(fade_dulation);
-  $('.reference').fadeOut(fade_dulation);
-  $.wait(fade_dulation).done(function(){
-    $('#slide-bar').fadeIn(fade_dulation);
-  });
+  my_fadeout('#target');
+  my_fadeout('.reference')
+  $.wait(fade_dulation).done(
+    my_fadein('#slide-bar')
+  );
   return $.wait(dulation);
 }
 $('#next').on('click', function(){

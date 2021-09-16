@@ -35,11 +35,13 @@ def index():
 def redirect_test():
     return redirect("task/hypara_test")
 
-num = []
 # def index():
 #     return app.send_static_file('index.html')
 @app.route('/task/hypara_test')
 def task():
+    for k,v in session.items():
+        print(k,v)
+
     hypara_set_id = "hoge"
     try:
         annotator_id = session["user_name"]
@@ -82,9 +84,8 @@ def task():
         'target_dulation': 300, #ターゲット画像表示時間
         'slider_dulation': 3000,
     } # load from sql table.
-    num.append([1])
-    pro = str(int(len(num)/10))
-    progress = int(pro[-1])
+    count = session["count"]
+    progress = count/10
     return render_template(
         'task.html',
         references=[reference1,reference2],
@@ -99,15 +100,16 @@ def task():
 ll = []
 @app.route("/add",methods=["post"])
 def add():
-    print("hoge")
-    for k in request.form.keys():
-        print(k)
+    count = session["count"] +1
+    session["count"] = count
+
     name = request.form['annotator_id']
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
     target = request.form['target']
     impression = request.form["test5"]
     impression = float(impression)
+
     # progress = request.form["progress"]
     # progress = int(progress)
     # annotator_id = request.form['annotator_id']
@@ -152,6 +154,7 @@ def login():
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
+            session["count"] = 0
             return (redirect('/task/hypara_test'))#,redirect('/'))
         else:
             return redirect(url_for("top",status="wrong_password"))
@@ -178,6 +181,7 @@ def registar():
         db_session.add(user)
         db_session.commit()
         session["user_name"] = user_name
+        session["count"] = 0
         return redirect(url_for("task"))
 
 
