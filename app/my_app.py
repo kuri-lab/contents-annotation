@@ -102,6 +102,7 @@ ll = []
 def add():
     num_touches = request.form['num_touches']
     timestamp = request.form['timestamp']
+    num_touches = int(num_touches)
     if num_touches > 0:
         count = session["count"] +1
         session["count"] = count
@@ -157,7 +158,8 @@ def login():
         hashed_password = sha256((user_name + password + key.SALT).encode("utf-8")).hexdigest()
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
-            session["count"] = 0
+            count = ImpressionContent.query.filter_by(name=user_name).count()
+            session["count"] = count
             return (redirect('/task/hypara_test'))#,redirect('/'))
         else:
             return redirect(url_for("top",status="wrong_password"))
@@ -194,4 +196,4 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0', port=8000,debug=True)
+app.run(port=8006,debug=True)
