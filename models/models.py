@@ -12,8 +12,11 @@ class ImpressionContent(Base):
     target = Column(String)
     impression = Column(Float)
     date = Column(DateTime, default=datetime.now())
+    count = Column(Integer)
+    num_touches = Column(Integer)
 
-    def __init__(self, name=None, reference1=None, reference2=None, target=None,impression=None, date=None):
+
+    def __init__(self, name=None, reference1=None, reference2=None, target=None,impression=None, date=None, count=None, num_touches=None):
         self.name = name
         self.reference1 = reference1
         self.reference2 = reference2
@@ -21,6 +24,8 @@ class ImpressionContent(Base):
         # 中心を０としている。マイナスがreference1でプラスがreference2
         self.impression = impression
         self.date = date
+        self.count = count
+        self.num_touches = num_touches
 
     def __repr__(self):
         return '<Title %r>' % (self.title)

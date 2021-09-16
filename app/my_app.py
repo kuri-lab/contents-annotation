@@ -106,7 +106,11 @@ def add():
     if num_touches > 0:
         count = session["count"] +1
         session["count"] = count
-
+    else:
+        #num_touches = 0
+        count = session["count"]
+        session["count"] = count
+    print(num_touches)
     name = request.form['annotator_id']
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
@@ -118,7 +122,7 @@ def add():
     # progress = int(progress)
     # annotator_id = request.form['annotator_id']
     # hypara_set_id = request.form['hypara_set_id']
-    content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now())
+    content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now(), count, num_touches)
     db_session.add(content)
     db_session.commit()
     ll.append([1])
