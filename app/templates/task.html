@@ -21,8 +21,9 @@
 #target,.reference,#slide-bar {
   display: none;
 }
-.main-panel{
+.image-panel{
   height: 250px;
+  max-height: 250px;
 }
 
 img.gray {
@@ -42,31 +43,28 @@ filter: grayscale(100%);
 <h2 class="m-4"> Nextボタンを押すとある画像が一瞬現れます。深く考えず、パッと見た瞬間の印象のみを手がかりに、どちらかの色の印象に近くなるように、スライドバーを調整して評価確定ボタンを押してください。 </h2>
 <div class="container-fruid">
     <div class="main-panel row text-center align-items-center m-2">
-      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img class="reference" src="{{references[0]}}" width="100%" height="100%"/>
+      <div class="image-panel col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        <img class="reference image-panel" src="{{references[0]}}" width="250px" height="250px"/>
       </div>
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
         <div id="target">
-          <img src="{{target}}" class="gray" width="50%" height="50%"/>
+          <img src="{{target}}" class="gray image-panel" width="250px"/>
         </div>
         <div id="slide-bar">
-          <form>
-              </form>
-            <form action="/add" method="post">
-            <input type="hidden" name="annotator_id" value="{{annotator_id}}">
-            <input type="hidden" name="reference1" value="{{references[0]}}">
-            <input type="hidden" name="reference2" value="{{references[1]}}">
-            <input type="hidden" name="target" value="{{target}}">
-            <input type="hidden" name="hypara_set_name" value="{{hypara_set_id}}">
-            <input type="hidden" name="timestamp" value=""> <!-- set in submitting function -->
+            <form id="form_sample" action="/add" method="post">
+              <input type="hidden" name="annotator_id" value="{{annotator_id}}">
+              <input type="hidden" name="reference1" value="{{references[0]}}">
+              <input type="hidden" name="reference2" value="{{references[1]}}">
+              <input type="hidden" name="target" value="{{target}}">
+              <input type="hidden" name="hypara_set_name" value="{{hypara_set_id}}">
+              <input type="hidden" id="timestamp" name="timestamp" value=""> <!-- set in submitting function -->
+              <input type="hidden" id="num_touches" name="num_touches" value="0"> <!-- set in submitting function -->
 
-
-              <input type="range"  class="custom-range w-100" value="1" min="-50" max="50" step="1" name="test5"
-              oninput="document.getElementById('test5').value=this.value">
-            <!-- <input type="range" class="custom-range w-100" min="-50" max="50" value="0" name="gauge" id="gauge" list="tlist"
-            oninput="document.getElementById('gauge').value=this.value"> -->
-           <output id="test5">0</output>
-           <button name="test5" value="Add">評価確定</button>
+                <input type="range"  class="custom-range w-100" value="0" min="-50" max="50" step="1" name="test5"
+                oninput="document.getElementById('test5').value=this.value" onclick="increment_touch()">
+              <!-- <input type="range" class="custom-range w-100" min="-50" max="50" value="0" name="gauge" id="gauge" list="tlist"
+              oninput="document.getElementById('gauge').value=this.value"> -->
+             Value: <output name="test5_output" id="test5">0</output>
            </form>
             <datalist id="tlist">
     　　　　　　<option value="-50"></option>
@@ -78,7 +76,7 @@ filter: grayscale(100%);
         </div>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-        <img class="reference" src="{{references[1]}}" width="100%" height="100%"/>
+        <img class="reference image-panel" src="{{references[1]}}" width="250px" height="250px"/>
       </div>
     </div>
     <div class="row text-center m-2">
@@ -114,6 +112,16 @@ filter: grayscale(100%);
 {% endblock %}
 
 {% block js %}
+// global変数
+var num_touches = 0
+var date = new Date() ;
+
+// slide_bar操作時の動作
+function increment_touch(){
+  num_touches=num_touches+1;
+
+}
+
 // jQueryでSleepする関数を作成
 $.wait = function(msec) {
     // Deferredのインスタンスを作成
@@ -125,7 +133,7 @@ $.wait = function(msec) {
     }, msec);
 
     return d.promise();
-};1111
+};
 var fade_dulation=0;
 function show_target(dulation){
   // ターゲットを表示
@@ -158,13 +166,17 @@ $('#next').on('click', function(){
   }).then(function(){
     // 色を表示
     show_reference();
-    return $.wait({{hyperparameters['target_dulation']}});
+    return $.wait({{hyperparameters['reference_dulation']}});
   }).then(function(){
     // スライダーを表示
     show_references_and_range_slider();
-    return $.wait({{hyperparameters['target_dulation']}});
+    return $.wait({{hyperparameters['slider_dulation']}});
   }).done(function(){
     // timestampを準備してsubmit，次のtaskへ遷移．
+    console.log(date.getTime());
+    $("#timestamp").val(date.getTime());
+    $("#num_touches").val(num_touches);
+    $("#form_sample").submit();
   });
 });
 {% endblock %}

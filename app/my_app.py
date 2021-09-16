@@ -78,9 +78,9 @@ def task():
     target = '/templates/Image/sample_target/' + random.choice(lst_target)
 
     hyperparameters = {
-        'reference_dulation': 2000, #msc
+        'reference_dulation': 300, #msc
         'target_dulation': 300, #ターゲット画像表示時間
-        'slider_dulation': 4000,
+        'slider_dulation': 3000,
     } # load from sql table.
     num.append([1])
     pro = str(int(len(num)/10))
@@ -99,6 +99,9 @@ def task():
 ll = []
 @app.route("/add",methods=["post"])
 def add():
+    print("hoge")
+    for k in request.form.keys():
+        print(k)
     name = request.form['annotator_id']
     reference1 = request.form['reference1']
     reference2 = request.form['reference2']
