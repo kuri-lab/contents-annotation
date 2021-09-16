@@ -85,7 +85,7 @@ def task():
         'slider_dulation': 3000,
     } # load from sql table.
     count = session["count"]
-    progress = count/10
+    progress = int(count/10)
     return render_template(
         'task.html',
         references=[reference1,reference2],
