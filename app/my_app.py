@@ -161,7 +161,6 @@ def login():
         if user.hashed_password == hashed_password:
             session["user_name"] = user_name
             count = ImpressionContent.query.filter_by(name=user_name, num_touches=1).count()
-            print(count)
             session["count"] = count
             return (redirect('/task/hypara_test'))#,redirect('/'))
         else:
