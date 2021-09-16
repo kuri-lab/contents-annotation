@@ -100,8 +100,11 @@ def task():
 ll = []
 @app.route("/add",methods=["post"])
 def add():
-    count = session["count"] +1
-    session["count"] = count
+    num_touches = request.form['num_touches']
+    timestamp = request.form['timestamp']
+    if num_touches > 0:
+        count = session["count"] +1
+        session["count"] = count
 
     name = request.form['annotator_id']
     reference1 = request.form['reference1']
@@ -114,7 +117,7 @@ def add():
     # progress = int(progress)
     # annotator_id = request.form['annotator_id']
     # hypara_set_id = request.form['hypara_set_id']
-    content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now())
+    content = ImpressionContent(name, reference1,reference2,target, impression,timestamp)
     db_session.add(content)
     db_session.commit()
     ll.append([1])
