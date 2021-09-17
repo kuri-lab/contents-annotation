@@ -124,7 +124,7 @@ def add():
     db_session.add(content)
     db_session.commit()
     ll.append([1])
-    n = len(ll)
+    n = count
    #print(n)
     if n <= 1000:
         return index()
@@ -198,4 +198,4 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(port=8006,debug=True)
+app.run(host='0.0.0.0', port=8000,debug=True)
