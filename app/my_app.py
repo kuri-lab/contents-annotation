@@ -198,4 +198,4 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0', port=8000,debug=True)
+app.run(port=8007,debug=True)
