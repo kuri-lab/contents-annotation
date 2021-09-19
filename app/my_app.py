@@ -84,7 +84,10 @@ def task():
         'target_dulation': 300, #ターゲット画像表示時間
         'slider_dulation': 3000,
     } # load from sql table.
-    count = session["count"]
+    try:
+        count = session["count"]
+    except KeyError:
+        count = 0
     progress = int(count/10)
     return render_template(
         'task.html',
