@@ -23,6 +23,7 @@ access to http://192.168.101.7:8000/top
 app/templates/Image に表示する画像を入れているが、gitignoreしている。表示している画像は以下のデータセット。
 * 手塚データセットは、[link](https://keio.app.box.com/s/s3pbq6na714vbbsh4hjuje267agrb74k). 
 * DomainNetのSketchは、[link](http://ai.bu.edu/M3SDA/). 
+* 色画像は、[link](https://www.color-sample.com/)、[link](http://machizukan.net/DK/bg_color_jis/file.pdf)
 
 ## Others
 ### docker
