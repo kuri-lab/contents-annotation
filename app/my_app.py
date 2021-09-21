@@ -103,10 +103,6 @@ def add():
     impression = request.form["test5"]
     impression = float(impression)
 
-    # progress = request.form["progress"]
-    # progress = int(progress)
-    # annotator_id = request.form['annotator_id']
-    # hypara_set_id = request.form['hypara_set_id']
     content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now(), count, num_touches)
     db_session.add(content)
     db_session.commit()
