@@ -5,6 +5,15 @@
 */.ipynb_checkpoints/*
 .virtual_documents/
 
+<<<<<<< HEAD
+=======
+
+*/Dataset/*
+targets/
+TEZUKA/
+DomainNet/
+MUCT/
+>>>>>>> f85a7210e289c5c77277e7b4173ac35bc88035a1
 
 Dataset/
 targets/
