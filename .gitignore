@@ -5,12 +5,11 @@
 */.ipynb_checkpoints/*
 .virtual_documents/
 
-Image/
-tezuka/
-tezuka_*/
+
+*/Dataset/*
+TEZUKA/
 DomainNet/
-target/
-sample_*/
+MUCT/
 
 impression.db
 impression_*.db
