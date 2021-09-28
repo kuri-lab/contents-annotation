@@ -2,6 +2,7 @@
 
 画像の印象を付与するアノテーションツール
 
+アノテーションツールの動画イメージ
 https://user-images.githubusercontent.com/60802703/134452838-0d658a8e-51a9-47a2-b519-ea39887afa54.mov
 
 
