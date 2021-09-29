@@ -15,6 +15,7 @@ MUCT/
 impression.db
 impression_*.db
 
+sql_sakura.ipynb
 python_run.ipynb
 sql.ipynb
 
