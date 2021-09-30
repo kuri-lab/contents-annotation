@@ -65,7 +65,7 @@ def task():
         hyperparameters = {
             'reference_dulation': 300, #msc
             'target_dulation': 300, #ターゲット画像表示時間
-            'slider_dulation': 3000,
+            'slider_dulation': 2500,
         } # load from sql table.
         try:
             count = session["count"]
