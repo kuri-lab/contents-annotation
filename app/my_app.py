@@ -6,13 +6,11 @@ from datetime import datetime
 from flask import session,redirect,url_for
 from app import key
 from hashlib import sha256
-
 import glob
 import os
 
 app = Flask(__name__, static_folder=".", static_url_path='')
 app.secret_key = key.SECRET_KEY
-
 
 @app.route('/index')
 # @app.route("/index")
@@ -26,17 +24,9 @@ def index():
 
 
 @app.route('/redirect')
-# @app.route("/index")
-# def redirect2():
-#     #print("test")
-#     print("test" + url_for("task"))
-#     return redirect("/task")
-
 def redirect_test():
     return redirect("task/hypara_test")
 
-# def index():
-#     return app.send_static_file('index.html')
 @app.route('/task/hypara_test')
 def task():
     if "user_name" in session:
