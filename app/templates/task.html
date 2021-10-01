@@ -59,8 +59,7 @@ filter: grayscale(100%);
               <input type="hidden" name="hypara_set_name" value="{{hypara_set_id}}">
               <input type="hidden" id="timestamp" name="timestamp" value=""> <!-- set in submitting function -->
               <input type="hidden" id="num_touches" name="num_touches" value="0"> <!-- set in submitting function -->
-
-                <input type="range"  class="custom-range w-100" value="0" min="-50" max="50" step="1" name="test5"
+                <input type="range"  class="custom-range w-50" value="0" min="-50" max="50" step="1" name="test5"
                 oninput="document.getElementById('test5').value=this.value" onclick="increment_touch()">
              Value: <output name="test5_output" id="test5">0</output>
            </form>
