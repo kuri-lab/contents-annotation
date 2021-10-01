@@ -51,6 +51,7 @@ def task():
                 break
         
         target = random.choice(lst_target).split('app')[1]
+        #target = random.choice(lst_image)
 
         hyperparameters = {
             'reference_dulation': 300, #msc
