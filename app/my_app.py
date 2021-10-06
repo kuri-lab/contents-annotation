@@ -50,8 +50,8 @@ def task():
             else:
                 break
         
-        target = random.choice(lst_target).split('app')[1]
-        #target = random.choice(lst_image)
+        #target = random.choice(lst_target).split('app')[1]
+        target = '/templates/color/BLUE.png'
 
         hyperparameters = {
             'reference_dulation': 300, #msc
@@ -60,6 +60,7 @@ def task():
         } # load from sql table.
         try:
             count = session["count"]
+            #count =500
         except KeyError:
             count = 0
         progress = int(count/10)
@@ -93,7 +94,6 @@ def add():
     target = request.form['target']
     impression = request.form["test5"]
     impression = float(impression)
-
     content = ImpressionContent(name, reference1,reference2,target, impression,datetime.now(), count, num_touches)
     db_session.add(content)
     db_session.commit()
@@ -173,5 +173,5 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0', port=8080,debug=True)
-#app.run(port=8007,debug=True) # ローカルで実行する場合
+#app.run(host='0.0.0.0', port=8080,debug=True)
+app.run(port=8007,debug=True) # ローカルで実行する場合

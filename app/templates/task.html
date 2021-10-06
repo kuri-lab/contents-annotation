@@ -59,6 +59,7 @@ filter: grayscale(100%);
               <input type="hidden" name="hypara_set_name" value="{{hypara_set_id}}">
               <input type="hidden" id="timestamp" name="timestamp" value=""> <!-- set in submitting function -->
               <input type="hidden" id="num_touches" name="num_touches" value="0"> <!-- set in submitting function -->
+              <input type="hidden" name="progress" id="progress" value="{{progress}}">
                 <input type="range"  class="custom-range w-50" value="0" min="-50" max="50" step="1" name="test5"
                 oninput="document.getElementById('test5').value=this.value" onclick="increment_touch()">     
                 <p> Value: <output name="test5_output" id="test5">0</output> </p>
@@ -93,6 +94,43 @@ filter: grayscale(100%);
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
       </div>
     </div>
+    <div style="text-align: center;">
+      <br>   
+  <img id="image_place" src="/templates/progressimg/flower_seichou1.png">
+</div>
+  <script type="text/javascript">
+    //img要素を取得する
+    let img = document.getElementById("image_place");
+    var form = document.getElementById("progress").value;
+    form = parseInt(form, 10);
+    console.log(form);
+    // 表示する画像番号
+    if (form >= 0 && form < 10) {
+      idx = "flower_seichou1";
+     // console.log('aは0以上、かつ4未満です');
+    }else if (form >= 10 && form < 20) {
+      //console.log('aは4以上、かつ50未満です');
+      idx = "flower_seichou2";
+    }else if (form >= 20 && form < 30) {
+      //console.log('aは50以上、かつ100未満です');
+      idx = "flower_seichou4";
+    }else if (form >= 30 && form < 40) {
+      //console.log('aは50以上、かつ100未満です');
+      idx = "flower_seichou5";
+    }else if (form >= 40 && form < 50) {
+      //console.log('aは50以上、かつ100未満です');
+      idx = "flower_seichou7";
+    }else {
+      idx = "flower_seichou8";
+      //console.log('その他です');
+    }
+    // img要素のsrcに画像ファイル名を設定する  
+    img.src = "/templates/progressimg/" + idx + ".png";
+    //img.src.style.textAlign = "center";
+  </script>
+  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+  </div>
+</div>
 </section>
 
 
