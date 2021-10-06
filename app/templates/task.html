@@ -105,21 +105,22 @@ filter: grayscale(100%);
     form = parseInt(form, 10);
     // 表示する画像番号
     if (form >= 0 && form < 10) {
+      // 回答回数が100回未満の時
       idx = "flower_seichou1";
-     // console.log('aは0以上、かつ4未満です');
     }else if (form >= 10 && form < 20) {
-      //console.log('aは4以上、かつ50未満です');
+      //回答回数が100回以上、200回未満の時
       idx = "flower_seichou2";
     }else if (form >= 20 && form < 30) {
-      //console.log('aは50以上、かつ100未満です');
+      //回答回数が200回以上、300回未満の時
       idx = "flower_seichou4";
     }else if (form >= 30 && form < 40) {
-      //console.log('aは50以上、かつ100未満です');
+      //回答回数が300回以上、400回未満の時
       idx = "flower_seichou5";
     }else if (form >= 40 && form < 50) {
-      //console.log('aは50以上、かつ100未満です');
+       //回答回数が400回以上、500回未満の時
       idx = "flower_seichou7";
     }else {
+      //回答回数が500回以上の時(ノルマクリア時)
       idx = "flower_seichou8";
     }
     // img要素のsrcに画像ファイル名を設定する  
