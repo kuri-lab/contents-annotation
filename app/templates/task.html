@@ -181,6 +181,8 @@ function my_fadein(selector){
   );
 }
 
+
+
 function show_target(dulation){
   // ターゲットを表示
   my_fadeout('#next');
@@ -196,7 +198,9 @@ function show_reference(dulation){
 }
 function show_references_and_range_slider(dulation){
   // 指標とスライドバーを表示
-  my_fadeout('#target');
+  $('#target').on('load', function() {
+    my_fadeout('#target');
+  });
   my_fadeout('.reference')
   $.wait(fade_dulation).done(
     my_fadein('#slide-bar')

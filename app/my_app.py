@@ -50,8 +50,8 @@ def task():
             else:
                 break
         
-        target = random.choice(lst_target).split('app')[1]
-        #target = '/templates/color/BLUE.png'
+        #target = random.choice(lst_target).split('app')[1]
+        target = '/templates/color/BLUE.png'
 
         hyperparameters = {
             'reference_dulation': 300, #msc
@@ -173,5 +173,5 @@ def logout():
     return redirect(url_for("top",status="logout"))
 
 
-app.run(host='0.0.0.0', port=8080,debug=True)
-#app.run(port=8007,debug=True) # ローカルで実行する場合
+#app.run(host='0.0.0.0', port=8080,debug=True)
+app.run(port=8007,debug=True) # ローカルで実行する場合
