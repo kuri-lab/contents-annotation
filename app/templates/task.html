@@ -96,35 +96,105 @@ filter: grayscale(100%);
     </div>
     <div style="text-align: center;">
       <br>   
-  <img id="image_place" src="/templates/progressimg/flower_seichou1.png">
+   <img id="image_place" src="/templates/progressimg/a_01.png" hspace="10"><img id="image_place2" src="/templates/progressimg/b_01.png"  hspace="10"><img id="image_place3" src="/templates/progressimg/c_01.png"  hspace="10"><img id="image_place4" src="/templates/progressimg/d_01.png" hspace="10"><img id="image_place5" src="/templates/progressimg/e_01.png" hspace="10">
 </div>
   <script type="text/javascript">
     //img要素を取得する
     let img = document.getElementById("image_place");
+    let img2 = document.getElementById("image_place2");
+    let img3 = document.getElementById("image_place3");
+    let img4 = document.getElementById("image_place4");
+    let img5 = document.getElementById("image_place5");
     var form = document.getElementById("progress").value;
     form = parseInt(form, 10);
     // 表示する画像番号
-    if (form >= 0 && form < 10) {
+    if (form >= 0 && form < 5) {
       // 回答回数が100回未満の時
-      idx = "flower_seichou1";
-    }else if (form >= 10 && form < 20) {
+      idx = "a_01";
+    }else if (form >= 5 && form < 10) {
       //回答回数が100回以上、200回未満の時
-      idx = "flower_seichou2";
-    }else if (form >= 20 && form < 30) {
+      idx = "a_02";
+    }else if (form >= 10 && form < 15) {
       //回答回数が200回以上、300回未満の時
-      idx = "flower_seichou4";
-    }else if (form >= 30 && form < 40) {
+      idx = "a_03";
+    }else if (form >= 15 && form < 20) {
       //回答回数が300回以上、400回未満の時
-      idx = "flower_seichou5";
-    }else if (form >= 40 && form < 50) {
-       //回答回数が400回以上、500回未満の時
-      idx = "flower_seichou7";
-    }else {
+      idx = "a_04";
+    }else if  (form >= 20) {
       //回答回数が500回以上の時(ノルマクリア時)
-      idx = "flower_seichou8";
+      idx = "a_05";
+    }
+    // 表示する画像番号
+    if (form >= 20 && form < 25) {
+      // 回答回数が100回未満の時
+      idx2 = "b_01";
+    }else if (form >= 25 && form < 30) {
+      //回答回数が100回以上、200回未満の時
+      idx2 = "b_02";
+    }else if (form >= 30 && form < 35) {
+      //回答回数が200回以上、300回未満の時
+      idx2 = "b_03";
+    }else if (form >= 35 && form < 40) {
+      //回答回数が300回以上、400回未満の時
+      idx2 = "b_04";
+    }else if (form >= 40) {
+      //回答回数が500回以上の時(ノルマクリア時)
+      idx2 = "b_05";
+    }
+    if (form >= 40 && form < 45) {
+      // 回答回数が100回未満の時
+      idx3 = "c_01";
+    }else if (form >= 45 && form < 50) {
+      //回答回数が100回以上、200回未満の時
+      idx3 = "c_02";
+    }else if (form >= 50 && form < 55) {
+      //回答回数が200回以上、300回未満の時
+      idx3 = "c_03";
+    }else if (form >= 55 && form < 60) {
+      //回答回数が300回以上、400回未満の時
+      idx3 = "c_04";
+    }else if (form >= 60) {
+      //回答回数が500回以上の時(ノルマクリア時)
+      idx3 = "c_05";
+    }
+    if (form >= 60 && form < 65) {
+      // 回答回数が100回未満の時
+      idx4 = "d_01";
+    }else if (form >= 65 && form < 70) {
+      //回答回数が100回以上、200回未満の時
+      idx4 = "d_02";
+    }else if (form >= 70 && form < 75) {
+      //回答回数が200回以上、300回未満の時
+      idx4 = "d_03";
+    }else if (form >= 75 && form < 80) {
+      //回答回数が300回以上、400回未満の時
+      idx4 = "d_04";
+    }else if (form >= 80) {
+      //回答回数が500回以上の時(ノルマクリア時)
+      idx4 = "d_05";
+    }
+    if (form >= 80 && form < 85) {
+      // 回答回数が100回未満の時
+      idx5 = "e_01";
+    }else if (form >= 85 && form < 90) {
+      //回答回数が100回以上、200回未満の時
+      idx5 = "e_02";
+    }else if (form >= 90 && form < 95) {
+      //回答回数が200回以上、300回未満の時
+      idx5 = "e_03";
+    }else if (form >= 95 && form < 100) {
+      //回答回数が300回以上、400回未満の時
+      idx5 = "e_04";
+    }else if (form >= 100) {
+      //回答回数が500回以上の時(ノルマクリア時)
+      idx5 = "e_05";
     }
     // img要素のsrcに画像ファイル名を設定する  
     img.src = "/templates/progressimg/" + idx + ".png";
+    img2.src = "/templates/progressimg/" + idx2 + ".png";
+    img3.src = "/templates/progressimg/" + idx3 + ".png";
+    img4.src = "/templates/progressimg/" + idx4 + ".png";
+    img5.src = "/templates/progressimg/" + idx5 + ".png";
     //img.src.style.textAlign = "center";
   </script>
   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
