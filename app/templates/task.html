@@ -61,7 +61,7 @@ filter: grayscale(100%);
               <input type="hidden" id="num_touches" name="num_touches" value="0"> <!-- set in submitting function -->
               <input type="hidden" name="progress" id="progress" value="{{progress}}">
                 <input type="range"  class="custom-range w-50" value="0" min="-50" max="50" step="1" name="test5"
-                oninput="document.getElementById('test5').value=this.value" onclick="increment_touch()">     
+                oninput="document.getElementById('test5').value=this.value" onclick="increment_touch()">
                 <p> Value: <output name="test5_output" id="test5">0</output> </p>
            </form>
             <datalist id="tlist">
@@ -82,24 +82,39 @@ filter: grayscale(100%);
         <button id="next" type="button" class="btn btn-primary w-25 bg-secondary">Next</button>
       </div>
     </div>
-    <div class="row text-center m-4">
-      <br>
-      <br>
+</div>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-panel row text-center align-items-center m-2">
       <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
         Progress:
       </div>
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-        <div class="progress">
-          <div class="progress-bar bg-secondary" role="progressbar" style="width: {{progress}}%" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+      <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+        <div class="progress" style="height: 40px;">
+          <div class="progress-bar bg-secondary" role="progressbar" style="width: {{progress}}%;" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
         </div>
       </div>
-      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-      </div>
     </div>
-    <div style="text-align: center;">
-      <br>   
-   <img id="image_place" src="/templates/progressimg/a_01.png" hspace="10"><img id="image_place2" src="/templates/progressimg/b_01.png"  hspace="10"><img id="image_place3" src="/templates/progressimg/c_01.png"  hspace="10"><img id="image_place4" src="/templates/progressimg/d_01.png" hspace="10"><img id="image_place5" src="/templates/progressimg/e_01.png" hspace="10">
-</div>
+    <div class="footer-image row text-right align-items-center m-2">
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"></div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <img id="image_place" src="/templates/progressimg/a_01.png" width="50%">
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <img id="image_place2" src="/templates/progressimg/b_01.png" width="50%">
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <img id="image_place3" src="/templates/progressimg/c_01.png" width="50%">
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <img id="image_place4" src="/templates/progressimg/d_01.png" width="50%">
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+        <img id="image_place5" src="/templates/progressimg/e_01.png" width="50%">
+      </div>
+  </div>
+</footer>
+
   <script type="text/javascript">
     //img要素を取得する
     let img = document.getElementById("image_place");
@@ -191,7 +206,7 @@ filter: grayscale(100%);
       //回答回数が500回以上の時(ノルマクリア時)
       idx5 = "e_05";
     }
-    // img要素のsrcに画像ファイル名を設定する  
+    // img要素のsrcに画像ファイル名を設定する
     img.src = "/templates/progressimg/" + idx + ".png";
     img2.src = "/templates/progressimg/" + idx2 + ".png";
     img3.src = "/templates/progressimg/" + idx3 + ".png";
