@@ -7,7 +7,7 @@
 
 Image
 */Dataset/*
-targets/
+#targets/
 TEZUKA/
 DomainNet/
 MUCT/
