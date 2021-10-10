@@ -51,3 +51,10 @@ jupyter lab --allow-root --ip=* --no-browser
 % sqlite3 models/impression.db
 sqlite> Select * from impressioncontents;
 ```
+
+
+### 新規ユーザ登録(optional)
+
+トップページの右側に白文字で「新規登録はこちら」の記載があるので、ここをクリックすることで新たなユーザを登録することが可能
+
+![新規ユーザ登録](app/templates/instruction/newuser.png "サンプル")

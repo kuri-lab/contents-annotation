@@ -60,7 +60,7 @@ def task():
         } # load from sql table.
         try:
             count = session["count"]
-            #count =0
+            #count =1000
         except KeyError:
             count = 0
         progress = int(count/10)
@@ -98,6 +98,7 @@ def add():
     db_session.add(content)
     db_session.commit()
     ll.append([1])
+    print(count)
     n = count
    #print(n)
     if n <= 1000:
