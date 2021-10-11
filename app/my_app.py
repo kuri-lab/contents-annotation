@@ -63,7 +63,7 @@ def task():
             #count =1000
         except KeyError:
             count = 0
-        progress = int(count/10)
+        progress = int(count/5)
         return render_template(
             'task.html',
             references=[reference1,reference2],
