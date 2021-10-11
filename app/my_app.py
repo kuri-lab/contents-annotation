@@ -60,7 +60,7 @@ def task():
         } # load from sql table.
         try:
             count = session["count"]
-            #count =1000
+            #count = 250
         except KeyError:
             count = 0
         progress = int(count/5)
