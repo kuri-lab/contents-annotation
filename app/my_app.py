@@ -101,7 +101,7 @@ def add():
     print(count)
     n = count
    #print(n)
-    if n <= 1000:
+    if n <= 500:
         return index()
     else :
         return logout()
