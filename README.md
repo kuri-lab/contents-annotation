@@ -57,4 +57,6 @@ sqlite> Select * from impressioncontents;
 
 トップページの右側に白文字で「新規登録はこちら」の記載があるので、ここをクリックすることで新たなユーザを登録することが可能
 
-![新規ユーザ登録](app/templates/instruction/newuser.png "サンプル")
+
+<!-- ![新規ユーザ登録](app/templates/instruction/newuser.png "サンプル") -->
+<img width="930" alt="スクリーンショット 2021-10-16 8 23 48" src="https://user-images.githubusercontent.com/60802703/137563904-646bcfca-76e2-4fee-8c6d-8e77351339f3.png">
